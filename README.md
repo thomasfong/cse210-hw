@@ -1,7 +1,6 @@
 # cse210-ww-student-template
-King Leong, Fong
 
-for students in the worldwide content version of CSE 210.
+King Leong, Fong in the worldwide content version of CSE 210.
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
