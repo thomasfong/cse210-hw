@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Security.Authentication;
 
 public class Activity
 {
@@ -13,7 +12,6 @@ public class Activity
         _description = "";
         _duration = 15;
     }
-
     public void SetName(string name)
     {
         _name = name;
@@ -24,14 +22,14 @@ public class Activity
     }
     public void ShowDetails()
     {
-        Console.WriteLine($"Wlcome th the {_name}.");
+        Console.WriteLine($"Welcome to the {_name}.");
         Console.WriteLine();
-        Console.WriteLine();
+        Console.WriteLine(_description);
     }
     public void AskDuration()
     {
         Console.WriteLine();
-        Console.Write("How long, in secons, would you like for your session? ");
+        Console.Write("How long, in seconds, would you like for your session? ");
         string durationString = Console.ReadLine();
         SetDuration(Convert.ToInt32(durationString));
     }
@@ -41,27 +39,34 @@ public class Activity
     }
     public int GetDuration()
     {
+        return _duration;
+    }
+    public void RunActivity()
+    {
         Console.Clear();
         ShowDetails();
         AskDuration();
         GetReady();
     }
-    public void EndAcivity()
+
+    public void EndActivity()
     {
         Console.WriteLine();
         Console.WriteLine();
-        Console.WriteLine($"well done!");
+        Console.WriteLine($"Well done!!");
         GenerateSpinner(5);
         Console.WriteLine();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name}.");
         GenerateSpinner(5);
     }
+
     public void GenerateSpinner(int totalSeconds)
     {
         int spinnerPosition = 25;
         int spinWait = 500;
 
         spinnerPosition = Console.CursorLeft;
+
         DateTime futureTime = GetFutureTime(5);
 
         while (DateTime.Now < futureTime)
@@ -89,7 +94,7 @@ public class Activity
         {
             Console.CursorLeft = timerPosition;
             Console.Write(totalSeconds - i);
-            Thread.Sleep(timeWait);
+            Thread.Sleep(timerWait);
         }
         Console.CursorLeft = timerPosition;
         Console.Write(" ");
